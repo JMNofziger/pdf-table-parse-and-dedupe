@@ -60,14 +60,14 @@ for index in df[df.isna().any(axis=1)].index.values.tolist():
   # 1 is artist in test data
   # in this case, artist name ran over a line - we group by song title, and transform artist name, then reassign artist name
   salmon[1] = salmon.groupby([0])[1].transform(lambda x : ' '.join(x))
-
+  new_row=salmon[1]
   # append BOTH new rows to parent df
   df = df.append(new_row, ignore_index=False)
   # drop BOTH originating rows from parent df
   # REMOVE all duplicates from parent df WITH KEEP feature enabled
   # Repeat for each key
   # https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html
-
+  print(df)
 
 
 # turn NaN value to empty string with numpy
